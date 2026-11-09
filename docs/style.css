@@ -1,0 +1,197 @@
+:root {
+  --bg: #0c0d1b; --panel: #17192c; --line: #303248; --ink: #f7f4ff;
+  --muted: #a5a4b9; --violet: #a084ff; --pink: #ff74bf; --orange: #ffb679;
+  --radius: 22px; --ease: cubic-bezier(.12,.8,.18,1); font-synthesis: none;
+}
+*, *::before, *::after { box-sizing: border-box }
+html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent }
+body { margin: 0; color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: radial-gradient(ellipse 550px 430px at 85% -10%,#30204b55,transparent), radial-gradient(ellipse 550px 430px at -15% 24%,#221f4e66,transparent),var(--bg); min-height: 100vh; min-height:100dvh }
+button, input { font: inherit }
+button { cursor:pointer; color:inherit; -webkit-user-select: none; user-select: none }
+button:focus-visible, input:focus-visible { outline:2px solid var(--violet); outline-offset:3px }
+button:disabled { cursor:not-allowed; opacity:.47 }
+input { color:var(--ink); min-width:0 }
+.app { width:min(100%, 930px); padding: 20px clamp(18px,5vw,42px) 12px; margin:0 auto; }
+.topbar {display:flex; align-items:center; justify-content:space-between; padding: 6px 0 27px }
+.brand {background:none; border:0; display:flex; align-items:center; gap:12px; font-weight:900; text-align:left; font-size:24px; line-height:1; letter-spacing:-1.5px; padding:0}
+.brand-icon {display:grid; place-items:center; background:linear-gradient(145deg,#b995ff,#ff86ba); color:#160f27; border-radius:14px; width:43px; height:43px; font-size:27px; box-shadow:0 7px 26px #a065e348}
+.brand-light { color:var(--violet) }
+.brand small {display:block; letter-spacing:2.7px; font-size:8px; font-weight:750; color:var(--muted); margin-top:4px}
+.offline-chip {font-size:10px; letter-spacing:1.4px; border:1px solid #384a43; color:#a0e9bf; padding:9px 12px; border-radius:30px; font-weight:800}
+.live-dot {display:inline-block; border-radius:50%; width:7px; height:7px; background:#7ad5a9; margin-right:6px; box-shadow:0 0 10px #53d49d}
+.tabs {display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin-bottom:31px; border-bottom:1px solid var(--line); padding-bottom:16px}
+.tab {border:1px solid transparent; background:transparent; color:#b8b4c9; font-size:12px; font-weight:750; border-radius:12px; padding:13px 5px; white-space:nowrap}
+.tab span {font-size:17px; vertical-align:-1px; margin-right:3px}
+.tab.active {border-color:#615477; background:linear-gradient(135deg,#312943,#252036); color:#fff}
+.screen[hidden] {display:none!important}
+.screen {animation: screenUp .4s var(--ease)}
+@keyframes screenUp {from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+.hero {overflow:hidden; position:relative; border:1px solid #4c3b6a; border-radius:28px; padding:clamp(26px,6vw,52px) clamp(24px,6vw,57px); background:radial-gradient(circle at 90% 15%,#7350be55,transparent 49%), linear-gradient(135deg,#26203b 2%,#161529 93%); margin-bottom:33px}
+.hero::after {content:'✳'; position:absolute; font-size:240px; color:#9782d70b; right:-34px; top:-79px; pointer-events:none}
+.eyebrow {font-size:10px; font-weight:900; letter-spacing:2.1px; color:#ecb6ff; display:flex; align-items:center; gap:10px}
+.sparkle {color:#ffce7e; font-size:21px}
+.hero h1 {font-size:clamp(43px,8vw,72px); letter-spacing:-3.8px; line-height:1.06; margin:21px 0 19px; font-weight:850}
+.hero h1 em {font-style:normal; background:linear-gradient(95deg,#be99ff,#fb85b7); color:transparent; -webkit-background-clip:text; background-clip:text}
+.hero p {color:#cbc5d9; max-width:440px; font-size:clamp(13px,2.8vw,16px); line-height:1.65; margin:0}
+.hero-tags {display:flex; flex-wrap:wrap; gap:9px; margin-top:32px}
+.hero-tags span {padding:8px 11px; font-size:11px; font-weight:700; border:1px solid #665279; background:#372e4a; border-radius:25px}
+.section-title, .panel-topline {display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:10px; font-weight:900; letter-spacing:1.8px}
+.section-title {margin-bottom:14px; color:#c9bfd8}
+.small-muted, .counter-label {color:#89889f; letter-spacing:.7px; font-weight:700}
+.game-cards {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
+.game-card {display:flex; flex-direction:column; text-align:left; align-items:stretch; min-height:256px; border:1px solid #48405d; border-radius:21px; padding:18px; background:linear-gradient(150deg,#2c2543,#191929); position:relative; overflow:hidden; transition:transform .25s, border-color .25s}
+.game-card:hover {transform:translateY(-4px);border-color:#a084ff}
+.game-card:active {transform:scale(.98)}
+.game-card-num {font-size:10px; letter-spacing:1.3px; font-weight:850; color:#c4abff}
+.game-card-art {font-size:64px; font-weight:900; letter-spacing:-17px; text-align:center; margin:auto; color:#c1a4ff; transform:rotate(-12deg); text-shadow:0 5px 22px #bd94ff33}
+.tilt-die {font-size:46px; color:#e3d5ff; transform:rotate(32deg); display:inline-block}
+.game-card-title {font-size:18px; font-weight:850; letter-spacing:-.5px; display:flex; align-items:center; justify-content:space-between; gap:5px}
+.game-card-title b {font-weight:400; color:#b3acbd}
+.game-card-desc {font-size:12px; color:#a9a6bc; line-height:1.5; margin-top:8px}
+.card-wheel {background:linear-gradient(145deg,#39223b,#1e182b); border-color:#634058}
+.card-wheel .game-card-num, .card-wheel .roulette-art {color:#ff9ac9}
+.roulette-art {font-size:105px; letter-spacing:0}
+.card-party {background:linear-gradient(145deg,#382725,#211a27); border-color:#694c4b}
+.card-party .game-card-num, .card-party .flame-art {color:#ffb786}
+.flame-art {font-size:83px; letter-spacing:-10px}
+.flame-art span {color:#ff7d89; font-size:34px; display:inline-block; transform:rotate(25deg) translate(-8px,-24px)}
+.home-foot {margin:32px 0 8px; text-align:center; font-size:12px; color:var(--muted)}
+.home-foot span {color:var(--violet)}
+.page-head {padding: 6px 0 24px}
+.page-head h2 {font-size:clamp(39px,7vw,58px); margin:10px 0 8px; letter-spacing:-2.5px; line-height:1.1}
+.page-head p {font-size:13px; line-height:1.65; color:#b9b6c8; margin:0}
+.eyebrow.violet {color:#bbabff} .eyebrow.pink {color:#ff99cf}.eyebrow.orange {color:#ffd1a0}
+.title-star {font-size:39px; color:var(--violet); vertical-align:middle}.pink-text {color:var(--pink)}.amp {color:var(--orange)}
+.panel {border:1px solid var(--line); background:linear-gradient(147deg,#1b1c30,#151625); border-radius:var(--radius); padding:clamp(18px,4vw,28px); margin-bottom:16px; box-shadow:0 15px 40px #00000013}
+.panel-topline {color:#d1c9de; margin-bottom:24px}
+.field-label {font-size:12px; font-weight:800; margin-bottom:10px}
+.inline-form {display:flex; gap:9px}
+.inline-form input {flex:1; border:1px solid #49485e; background:#101120; padding:15px 14px; border-radius:12px; font-size:14px; outline:none}
+.inline-form input:focus {border-color:#a18aff}
+.inline-form input::placeholder {color:#7e7d91}
+.add-button {width:49px; flex:0 0 49px; border:0; border-radius:12px; font-size:29px; font-weight:500; background:linear-gradient(135deg,#9d79ff,#ce83f7); color:#171224}
+.chip-list {display:flex; flex-wrap:wrap; gap:8px; margin-top:15px}
+.chip {border:1px solid #4a405b; background:#2b253c; border-radius:28px; display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:12px; padding:8px 10px 8px 13px; max-width:100%; overflow-wrap:anywhere}
+.chip button {border:0; background:#4b405d; width:20px; height:20px; border-radius:50%; display:grid; place-items:center; color:#ddd1ef; padding:0; font-size:14px}
+.hint {font-size:11px; color:#9896ac; line-height:1.6; margin:12px 0 0}
+.hint.centered {text-align:center}
+.wheel-panel {display:flex; flex-direction:column; align-items:center}
+.wheel-frame {position:relative; width:min(100%,342px); aspect-ratio:1; display:grid; place-items:center; margin:22px auto 8px}
+.wheel-frame canvas {width:96%; height:96%; display:block; border-radius:50%; box-shadow:0 0 0 5px #3a3151, 0 0 0 9px #17182b, 0 18px 40px #0004; transition:transform 4.1s cubic-bezier(.12,.8,.12,1); will-change:transform}
+.wheel-hub {position:absolute; width:44px; height:44px; border:5px solid #eee6ff; border-radius:50%; background:#30233f; display:grid; place-items:center; font-size:18px; color:#fff; box-shadow:0 5px 15px #0007}
+.pointer {position:absolute; top:-18px; left:50%; transform:translateX(-50%); z-index:3; font-size:36px; line-height:1; filter:drop-shadow(0 2px 3px #0008)}
+.pointer-pink {color:#ff74bf}.pointer-black {color:#07090f; font-size:29px; filter:drop-shadow(0 0 2px #fff) drop-shadow(0 2px 2px #000)}.pointer-red {color:#ff455b; font-size:38px}
+.pointer-opposite {position:absolute; bottom:-16px; left:50%; transform:translateX(-50%); font-size:26px; z-index:2; line-height:1}
+.opposite-red {color:#ff455b; font-size:32px}.opposite-black {color:#080910; filter:drop-shadow(0 0 1px #fff)}
+.outcome {text-align:center; font-size:23px; font-weight:850; min-height:45px; margin-top:9px; padding:0 12px; word-break:break-word}
+.primary-button {display:flex; align-items:center; justify-content:center; width:100%; border:0; border-radius:14px; padding:18px 18px; margin-top:15px; font-size:13px; letter-spacing:1.2px; font-weight:950; color:#150e29; box-shadow:0 12px 28px #0003}
+.primary-button span {margin-left:auto; font-size:18px; font-weight:400}
+.violet-button {background:linear-gradient(100deg,#aa8aff,#d8b7ff)}
+.pink-button {background:linear-gradient(100deg,#ff8ecc,#ffbadb)}
+.orange-button {background:linear-gradient(100deg,#ff9c81,#ffca89)}
+.primary-button:not(:disabled):active {transform:scale(.99)}
+.result-actions, .suggest-buttons, .mode-buttons {display:flex; gap:9px; width:100%; margin-top:12px}
+.subtle-button {background:#29283f; color:#ece4f8; border:1px solid #4b4560; border-radius:11px; padding:12px 11px; font-size:12px; font-weight:750; flex:1}
+.subtle-button:hover {border-color:#9986b7}
+.danger-outline {color:#ffb2b4; border-color:#714454}
+.dice-panel {max-width:720px; margin-left:auto; margin-right:auto}
+.dice-sum {font-size:76px; font-weight:900; text-align:center; line-height:1.25; letter-spacing:-4px; margin:10px 0 0; color:#d4baff; text-shadow:0 0 60px #9a7ce544}
+.dice-tip {text-align:center; font-size:12px; color:#aaa3be; min-height:24px}
+.dice-grid {display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:16px; min-height:150px; padding:28px 4px}
+.die {--dice-size:92px; position:relative; width:var(--dice-size); height:var(--dice-size); border-radius:19%; background:linear-gradient(145deg,#fff,#d7d3e9); box-shadow:inset -7px -8px 9px #7e6e9c33,inset 3px 3px 6px #fff,0 12px 20px #0006; flex-shrink:0}
+.die.compact {--dice-size:62px}
+.die.tiny {--dice-size:43px}
+.die .pip {position:absolute; background:#332b52; border-radius:50%; width:17%; height:17%; box-shadow:inset 2px 2px 3px #0d0b1744}
+.die .pip[data-pos="tl"]{top:19%;left:19%}
+.die .pip[data-pos="tc"]{top:19%;left:41.5%}
+.die .pip[data-pos="tr"]{top:19%;right:19%}
+.die .pip[data-pos="ml"]{top:41.5%;left:19%}
+.die .pip[data-pos="mc"]{top:41.5%;left:41.5%}
+.die .pip[data-pos="mr"]{top:41.5%;right:19%}
+.die .pip[data-pos="bl"]{bottom:19%;left:19%}
+.die .pip[data-pos="bc"]{bottom:19%;left:41.5%}
+.die .pip[data-pos="br"]{bottom:19%;right:19%}
+.die.shaking {animation: shake .24s linear infinite}
+@keyframes shake {0%{transform:rotate(-15deg) translate(-7px,-4px) scale(.96)}25%{transform:rotate(14deg) translate(6px,-9px) scale(1.04)}50%{transform:rotate(27deg) translate(5px,7px) scale(.9)}75%{transform:rotate(-24deg) translate(-6px,5px) scale(1.02)}100%{transform:rotate(-15deg) translate(-7px,-4px) scale(.96)}}
+.divider-soft {border-top:1px solid #37374c; margin:24px 0}
+.control-line,.field-between {display:flex; justify-content:space-between; gap:10px; align-items:center}
+.control-line strong,.field-between strong {display:block; font-size:13px}
+.control-line small,.field-between small {display:block; color:#9795ad; font-size:11px; line-height:1.5; margin-top:4px}
+.stepper {display:flex; align-items:center; border:1px solid #494459; background:#131323; border-radius:11px; overflow:hidden; flex-shrink:0}
+.stepper button {border:0; background:#322a45; font-size:22px; width:40px; height:42px}
+.stepper input {border:0; padding:0; background:transparent; width:52px; height:42px; text-align:center; font-size:18px; font-weight:850; -moz-appearance:textfield; appearance:textfield}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button { -webkit-appearance:none; margin:0}
+.small-stepper button {width:35px}.small-stepper input {width:43px}
+.footnote {font-size:11px; color:#9692a9; text-align:center; line-height:1.65; padding:0 12px}
+.level-picker {display:grid; grid-template-columns:repeat(4,1fr); gap:6px}
+.level-picker button {padding:12px 3px; border:1px solid #4d425a; border-radius:10px; font-size:11px; font-weight:750; color:#b8b3c8; background:#252235}
+.level-picker button.active {background:#4a304d; border-color:#f39fbf; color:#ffcee0}
+.party-arena {display:flex; flex-direction:column; align-items:stretch}
+.role-heading {display:flex; align-items:center; justify-content:center; gap:8px; margin-top:4px; letter-spacing:1px; font-size:11px}
+.role-heading small {color:#9c98b0; font-size:9px; letter-spacing:.6px}
+.role-dot {width:10px; height:10px; border-radius:50%; display:inline-block}
+.black-dot {background:#08090d; border:1px solid #a0a0ac}.red-dot {background:#ff475e}
+.party-wheel {width:min(100%,250px); margin:13px auto 11px}
+.party-wheel canvas {box-shadow:0 0 0 4px #463453,0 0 0 8px #17182b,0 12px 30px #0005; transition-duration:4.2s}
+.party-wheel .wheel-hub {width:36px;height:36px;font-size:15px}
+.role-connector {width:100%; position:relative; display:flex; justify-content:center; margin:7px 0 18px}
+.role-connector::before {content:''; height:1px; background:#454053; position:absolute; top:50%; width:100%;z-index:0}
+.role-connector span {position:relative;z-index:1;border-radius:25px; padding:7px 12px; background:#453048; color:#ffbca2; font-weight:950; font-size:11px}
+.target-heading {margin-top:0}
+.party-result {margin-top:16px; padding:17px; border-radius:15px; border:1px solid #67516b; background:linear-gradient(125deg,#2c2341,#231c32); text-align:center; display:flex; align-items:center; flex-direction:column; gap:7px; min-height:105px}
+.result-label {font-size:9px; letter-spacing:2px; color:#bf9bcf; font-weight:850}
+.party-result strong {font-size:clamp(17px,4.5vw,23px); letter-spacing:-.4px}
+.party-result small {font-size:11px;color:#b6a9c3;line-height:1.5}
+.round-controls {margin-top:16px}
+.truth-status {font-size:12px; color:#d6c8ed; text-align:center; border-radius:10px; background:#2a2941; border:1px solid #4b4664; padding:11px}
+.choice-prompt {margin:20px 0 11px; text-align:center; font-size:12px; font-weight:750}
+.mode-button {flex:1; padding:16px 10px; border:1px solid #68536c; border-radius:13px; background:#382843; font-size:13px; letter-spacing:1px; font-weight:900}
+.truth-choice {color:#ffaddc}.dare-choice {color:#ffbb8f;background:#483126}
+.mode-button.selected {border:2px solid currentColor; box-shadow:inset 0 0 0 1px #ffffff24}
+.suggest-heading {font-size:10px; margin-top:27px; color:#cec2e3; text-align:center; font-weight:900; letter-spacing:1.2px}
+.suggest-heading span {display:block; font-size:9px; color:#8d8aa1; letter-spacing:.8px; margin-top:4px}
+.suggest-buttons {margin-top:14px}
+.suggestion {border-radius:12px; padding:18px; margin-top:12px; background:#201b34; border:1px solid #504366}
+.suggestion small {color:#b5a1d0; font-size:9px; font-weight:900; letter-spacing:1.2px}
+.suggestion p {margin:11px 0 0; font-size:15px; font-weight:750; line-height:1.55; overflow-wrap:anywhere}
+.truth-board {display:grid; gap:8px}
+.truth-row {display:flex; align-items:center; justify-content:space-between; gap:10px; padding:11px 13px; border-radius:10px; background:#232136; font-size:12px; font-weight:750}
+.truth-row .score {font-variant-numeric:tabular-nums; color:#d5a7e7}
+.text-button {border:0; background:transparent; color:#ada2c6; font-size:12px; margin:17px auto 0; display:block; text-decoration:underline; text-underline-offset:3px}
+.footer {display:flex; justify-content:space-between; color:#77758c; font-size:9px; font-weight:800; letter-spacing:1.2px; border-top:1px solid #2b2b40; margin-top:40px; padding:23px 0 15px}
+.toast {position:fixed; bottom:calc(28px + env(safe-area-inset-bottom)); left:50%; transform:translate(-50%,15px); background:#f4e8ff; color:#241932; z-index:8; border-radius:12px; max-width:min(90vw,480px); text-align:center; padding:12px 20px; font-size:12px; font-weight:850; box-shadow:0 12px 35px #0007; opacity:0; pointer-events:none; transition:opacity .22s, transform .22s}
+.toast.show {opacity:1;transform:translate(-50%,0)}
+#confetti-layer {position:fixed;z-index:20;inset:0;overflow:hidden;pointer-events:none}
+.confetti {position:absolute;top:-20px;width:9px;height:15px;animation:confetti-fall 1.8s linear forwards;opacity:1}
+@keyframes confetti-fall {to {transform:translate3d(var(--shift),105vh,0) rotate(920deg);opacity:0}}
+@media (min-width:740px) { .party-arena {max-width:640px;margin-left:auto;margin-right:auto} .scoreboard {max-width:640px;margin-left:auto;margin-right:auto} }
+@media (max-width:620px) {
+  .app {padding-top:16px}
+  .topbar {padding-bottom:19px}
+  .tabs {gap:3px; margin-bottom:24px}
+  .tab {font-size:10px;padding:11px 3px}.tab span {display:block;font-size:20px;margin-right:0;margin-bottom:3px}
+  .game-cards {grid-template-columns:1fr; gap:11px}
+  .game-card {min-height:142px;display:grid;grid-template-columns:1fr 88px; grid-template-rows:22px 1fr 37px; gap:0}
+  .game-card-num {grid-column:1;grid-row:1}
+  .game-card-art {grid-column:2;grid-row:1 / 4;font-size:57px;letter-spacing:-13px;align-self:center;margin:0}
+  .game-card-title {grid-column:1;grid-row:2;font-size:18px}
+  .game-card-title b {display:none}
+  .game-card-desc {grid-column:1;grid-row:3;align-self:start;margin-top:0}
+  .roulette-art {font-size:72px;letter-spacing:0}.flame-art {font-size:63px}.flame-art span {font-size:24px}
+  .hero h1 {letter-spacing:-2.5px}
+  .result-actions,.suggest-buttons {flex-wrap:wrap}
+  .result-actions button,.suggest-buttons button {min-width:46%}
+}
+@media(max-width:360px) {
+  .role-heading {font-size:9px}.role-heading small {font-size:8px}
+  .level-picker {grid-template-columns:repeat(2,1fr)}
+  .field-between strong {font-size:11px}.field-between small {font-size:10px}
+  .stepper button {width:32px}.stepper input {width:37px}
+  .game-card-desc {font-size:11px}
+}
+@media(prefers-reduced-motion:reduce) {
+  html {scroll-behavior:auto}
+  .screen,.die.shaking,.confetti {animation:none!important}
+  .wheel-frame canvas {transition:none!important}
+  * {scroll-behavior:auto!important}
+}

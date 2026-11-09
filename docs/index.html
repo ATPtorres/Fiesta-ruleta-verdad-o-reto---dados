@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0c0d1b">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Dados, ruleta personalizada y verdad o reto. Tres juegos para tus reuniones, sin internet.">
+  <title>Fiesta Mix — Tres juegos, una fiesta</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="confetti-layer" aria-hidden="true"></div>
+  <div class="app">
+    <header class="topbar">
+      <button class="brand" data-go="home" aria-label="Volver al inicio">
+        <span class="brand-icon" aria-hidden="true">✦</span>
+        <span>fiesta<span class="brand-light">mix</span><small>PLAY EDITION</small></span>
+      </button>
+      <span class="offline-chip"><span class="live-dot"></span> OFFLINE</span>
+    </header>
+
+    <nav class="tabs" aria-label="Elegir juego">
+      <button type="button" class="tab active" data-go="home" aria-current="page"><span>⌂</span> Inicio</button>
+      <button type="button" class="tab" data-go="dice"><span>⚄</span> Dados</button>
+      <button type="button" class="tab" data-go="roulette"><span>◉</span> Ruleta</button>
+      <button type="button" class="tab" data-go="party"><span>✦</span> Verdad o reto</button>
+    </nav>
+
+    <main>
+      <section id="home" class="screen active" aria-label="Inicio">
+        <div class="hero">
+          <div class="eyebrow">TU NOCHE, TUS REGLAS <span class="sparkle">✳</span></div>
+          <h1>Que empiece<br><em>la diversión.</em></h1>
+          <p>Tres formas de jugar. Cero complicaciones. Todo listo para romper el hielo.</p>
+          <div class="hero-tags"><span>✧ Sin internet</span><span>✧ Personalizable</span><span>✧ Gratis</span></div>
+        </div>
+        <div class="section-title"><span>ELIGE TU AVENTURA</span><span class="small-muted">01 — 03</span></div>
+        <div class="game-cards">
+          <button class="game-card card-dice" data-go="dice">
+            <span class="game-card-num">01 / SUERTE</span>
+            <span class="game-card-art" aria-hidden="true">⚄ <span class="tilt-die">⚂</span></span>
+            <span class="game-card-title">Lanza los dados <b>↗</b></span>
+            <span class="game-card-desc">Elige cuántos dados y deja que decida el azar.</span>
+          </button>
+          <button class="game-card card-wheel" data-go="roulette">
+            <span class="game-card-num">02 / DECISIÓN</span>
+            <span class="game-card-art roulette-art" aria-hidden="true">✺</span>
+            <span class="game-card-title">Arma tu ruleta <b>↗</b></span>
+            <span class="game-card-desc">Nombres, opciones o retos: tú pones las reglas.</span>
+          </button>
+          <button class="game-card card-party" data-go="party">
+            <span class="game-card-num">03 / FIESTA</span>
+            <span class="game-card-art flame-art" aria-hidden="true">♥ <span>✦</span></span>
+            <span class="game-card-title">Verdad o reto <b>↗</b></span>
+            <span class="game-card-desc">Dos ruletas, preguntas inesperadas y muchas risas.</span>
+          </button>
+        </div>
+        <p class="home-foot">Diseñado para compartir momentos reales, no pantallas. <span>✳</span></p>
+      </section>
+
+      <section id="dice" class="screen" aria-label="Juego de dados" hidden>
+        <div class="page-head">
+          <div class="eyebrow violet">MODO 01 · SUERTE PURA</div>
+          <h2>Dados <span class="title-star">✦</span></h2>
+          <p>Escoge la cantidad y que la suerte haga lo suyo.</p>
+        </div>
+        <div class="panel dice-panel">
+          <div class="panel-topline"><span>RESULTADO TOTAL</span><span class="counter-label" id="dice-meta">2 dados · 6 caras</span></div>
+          <div class="dice-sum" id="dice-sum" aria-live="polite">—</div>
+          <div class="dice-tip" id="dice-status">Pulsa lanzar para conocer el resultado</div>
+          <div class="dice-grid" id="dice-grid" aria-label="Dados"></div>
+          <div class="divider-soft"></div>
+          <div class="control-line">
+            <div><strong>Cantidad de dados</strong><small>De 1 a 100 dados</small></div>
+            <div class="stepper">
+              <button type="button" id="dice-minus" aria-label="Quitar dado">−</button>
+              <input id="dice-count" type="number" inputmode="numeric" min="1" max="100" value="2" aria-label="Cantidad de dados">
+              <button type="button" id="dice-plus" aria-label="Agregar dado">+</button>
+            </div>
+          </div>
+          <button id="roll-dice" class="primary-button violet-button">⚄ &nbsp; LANZAR DADOS <span>↗</span></button>
+        </div>
+        <p class="footnote">Cada dado tiene seis caras y la suma aparece arriba al terminar la animación.</p>
+      </section>
+
+      <section id="roulette" class="screen" aria-label="Ruleta personalizada" hidden>
+        <div class="page-head">
+          <div class="eyebrow pink">MODO 02 · TU PROPIA SUERTE</div>
+          <h2>Tu ruleta <span class="title-star pink-text">✳</span></h2>
+          <p>Agrega todas las opciones que quieras y déjalo en manos del azar.</p>
+        </div>
+        <div class="panel">
+          <div class="panel-topline"><span>PERSONALIZA TU RULETA</span><span id="roulette-count" class="counter-label">0 opciones</span></div>
+          <div class="field-label">Añade una opción</div>
+          <form id="roulette-form" class="inline-form">
+            <input id="roulette-input" maxlength="36" placeholder="Ej. Pizza, Juan, Baile..." autocomplete="off" aria-label="Nueva opción">
+            <button class="add-button" type="submit" aria-label="Agregar opción">+</button>
+          </form>
+          <div id="roulette-chips" class="chip-list" aria-label="Opciones agregadas"></div>
+          <p class="hint" id="roulette-hint">Necesitas al menos 2 opciones para girar.</p>
+        </div>
+        <div class="panel wheel-panel">
+          <div class="wheel-frame big-wheel">
+            <div class="pointer pointer-pink" aria-hidden="true">▼</div>
+            <canvas id="roulette-canvas" width="640" height="640" aria-label="Ruleta de opciones"></canvas>
+            <div class="wheel-hub">✦</div>
+          </div>
+          <div class="outcome" id="roulette-outcome" aria-live="polite">¿Qué saldrá?</div>
+          <button id="spin-roulette" class="primary-button pink-button" disabled>✺ &nbsp; GIRAR RULETA <span>↗</span></button>
+          <div id="roulette-actions" class="result-actions" hidden>
+            <button id="keep-option" class="subtle-button">✓ Mantener opción</button>
+            <button id="remove-winner" class="subtle-button danger-outline">× Eliminar elegida</button>
+          </div>
+          <p class="hint centered">Después de cada giro puedes conservar o eliminar la opción seleccionada.</p>
+        </div>
+      </section>
+
+      <section id="party" class="screen" aria-label="Verdad o reto" hidden>
+        <div class="page-head">
+          <div class="eyebrow orange">MODO 03 · SOLO MAYORES DE 18</div>
+          <h2>Verdad <span class="amp">&</span> reto <span class="title-star">✦</span></h2>
+          <p>Dos ruletas, dos papeles distintos. Nadie sabe qué pasará.</p>
+        </div>
+        <div class="panel">
+          <div class="panel-topline"><span>1. PREPARA TU FIESTA</span><span id="player-count-label" class="counter-label">0 jugadores</span></div>
+          <div class="field-label">Participantes</div>
+          <form class="inline-form" id="player-form">
+            <input id="player-input" maxlength="24" placeholder="Nombre de un jugador..." autocomplete="off" aria-label="Nombre del participante">
+            <button class="add-button" type="submit" aria-label="Agregar participante">+</button>
+          </form>
+          <div id="player-chips" class="chip-list" aria-label="Jugadores"></div>
+          <p id="player-hint" class="hint">Agrega al menos 2 personas para comenzar.</p>
+          <div class="divider-soft"></div>
+          <div class="field-between">
+            <div><strong>Verdades máximas seguidas</strong><small>Luego tendrá que elegir reto</small></div>
+            <div class="stepper small-stepper">
+              <button type="button" id="truth-minus" aria-label="Disminuir máximo de verdades">−</button>
+              <input id="truth-limit" type="number" inputmode="numeric" min="1" max="99" value="2" aria-label="Máximo de verdades seguidas">
+              <button type="button" id="truth-plus" aria-label="Aumentar máximo de verdades">+</button>
+            </div>
+          </div>
+          <div class="divider-soft"></div>
+          <div class="field-label">Intensidad de sugerencias</div>
+          <div class="level-picker" id="level-picker" role="group" aria-label="Intensidad de preguntas y retos">
+            <button type="button" data-level="suave" class="active">🌿 Suave</button>
+            <button type="button" data-level="fiesta">🎉 Fiesta</button>
+            <button type="button" data-level="picante">🌶️ Picante</button>
+            <button type="button" data-level="atrevido">🔥 Atrevido</button>
+          </div>
+          <p class="hint">Las sugerencias son opcionales. Todos pueden decir «paso» sin dar explicaciones.</p>
+        </div>
+        <div class="panel party-arena">
+          <div class="panel-topline"><span>2. QUE DECIDAN LAS RULETAS</span><span class="counter-label">DOS ROLES · UN GIRO</span></div>
+          <div class="role-heading"><span class="role-dot black-dot"></span><strong>QUIÉN PREGUNTA / RETA</strong><small>PUNTA NEGRA</small></div>
+          <div class="wheel-frame party-wheel">
+            <div class="pointer pointer-black" aria-hidden="true">▼</div>
+            <canvas id="asker-canvas" width="560" height="560" aria-label="Ruleta del que pregunta o reta"></canvas>
+            <div class="wheel-hub">✦</div>
+            <div class="pointer-opposite opposite-red" aria-hidden="true">▲</div>
+          </div>
+          <div class="role-connector" aria-hidden="true"><span>VS</span></div>
+          <div class="role-heading target-heading"><span class="role-dot red-dot"></span><strong>QUIÉN RESPONDE / CUMPLE</strong><small>PUNTA ROJA</small></div>
+          <div class="wheel-frame party-wheel">
+            <div class="pointer pointer-red" aria-hidden="true">▼</div>
+            <canvas id="target-canvas" width="560" height="560" aria-label="Ruleta del retado o preguntado"></canvas>
+            <div class="wheel-hub">✦</div>
+            <div class="pointer-opposite opposite-black" aria-hidden="true">▲</div>
+          </div>
+          <button type="button" id="spin-party" class="primary-button orange-button" disabled>✦ &nbsp; GIRAR AMBAS RULETAS <span>↗</span></button>
+          <div class="party-result" id="party-result" aria-live="polite"><span class="result-label">PRÓXIMA RONDA</span><strong>¿Quién será el siguiente?</strong><small>Agrega jugadores y gira las ruletas</small></div>
+          <div id="round-controls" class="round-controls" hidden>
+            <div id="truth-status" class="truth-status"></div>
+            <div class="choice-prompt">¿Qué elige la persona seleccionada?</div>
+            <div class="mode-buttons">
+              <button type="button" id="choose-truth" class="mode-button truth-choice">♡ VERDAD</button>
+              <button type="button" id="choose-dare" class="mode-button dare-choice">⚡ RETO</button>
+            </div>
+            <div class="suggest-heading">¿SIN IDEAS? <span>PRUEBA UNA SUGERENCIA</span></div>
+            <div class="suggest-buttons">
+              <button type="button" id="suggest-truth" class="subtle-button">✧ Pregunta aleatoria sugerida</button>
+              <button type="button" id="suggest-dare" class="subtle-button">✧ Reto aleatorio sugerido</button>
+            </div>
+            <div class="suggestion" id="suggestion" aria-live="polite"><small>IDEAS PARA LA RONDA</small><p>Elige verdad o reto, o utiliza una sugerencia.</p></div>
+          </div>
+        </div>
+        <div class="panel scoreboard">
+          <div class="panel-topline"><span>CONTADOR DE VERDADES</span><span class="counter-label">POR PERSONA</span></div>
+          <div id="truth-board" class="truth-board"></div>
+          <button type="button" id="reset-history" class="text-button">↺ Reiniciar rondas y contadores</button>
+        </div>
+        <p class="footnote">Juego para adultos. Respeta los límites y el consentimiento de todos: nada de retos peligrosos u obligatorios.</p>
+      </section>
+    </main>
+    <footer class="footer"><span>FIESTA MIX · HECHO PARA JUGAR JUNTOS</span><span>✳ 2026</span></footer>
+  </div>
+  <div class="toast" role="status" id="toast" aria-live="polite"></div>
+  <script src="game-utils.js"></script>
+  <script src="prompts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
